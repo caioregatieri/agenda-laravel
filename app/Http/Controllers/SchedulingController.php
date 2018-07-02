@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 Use App\Scheduling;
+Use App\Doctor;
+Use App\Patient;
 
 class SchedulingController extends Controller
 {

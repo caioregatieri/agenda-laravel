@@ -16,9 +16,11 @@
         <!-- Custom -->
         <link name="custom" rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <style>
+        @if(Auth::guest()) 
             #page-wrapper {
-                margin-left: 0;
+                margin-left: 250;
             }
+        @endif
         </style>
         @yield('head')
     </head>
@@ -77,6 +79,41 @@
     <script src="{{ asset('js/metisMenu.min.js') }}"></script>
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('js/sb-admin-2.js') }}"></script>
+    <!--Jquery Mask -->
+    <script src="{{ asset('js/jquery.maskedinput.min.js') }}"></script>
+    <!-- Mascaras -->
+    <script>
+        $(".input-phone")
+        .mask("(99) 9999-9999?9")
+        .focusout(function (event) {  
+            var target, phone, element;  
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            phone = target.value.replace(/\D/g, '');
+            element = $(target);  
+            element.unmask();  
+            if(phone.length > 10) {  
+                element.mask("(99) 99999-999?9");  
+            } else {  
+                element.mask("(99) 9999-9999?9");  
+            }  
+        });
+        $(".input-hour")
+        .mask("99:99")
+        .focusout(function (event) {  
+            var target, time, element;  
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            time = target.value.split(":");
+            element = $(target);  
+            if(time[0] == "" ||  time[1] == "") {
+                alert("Horário inválido");  
+                element.val("");  
+            }
+            if(time[0] > 23 ||  time[1] > 59) {
+                alert("Horário inválido");  
+                element.val("");  
+            }
+        });
+    </script>
     @yield('scripts')
 </body>
 

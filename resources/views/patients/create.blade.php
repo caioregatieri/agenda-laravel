@@ -25,7 +25,7 @@ Paciente
 
     {!! Form::open(['route'=>'patients.store', 'method'=>'post', 'id'=>'form']) !!}
 
-      @include('patients/_formCreate')
+      @include('patients/_form')
 
       <a href="{{ route('patients.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
       <button type="submit" class="btn btn-success btn-save"><i class="fa fa-check"></i> Salvar</button>
@@ -42,6 +42,6 @@ Paciente
       $('#form').submit(function(){
         $('.btn-save').prop('disabled', true);
       });
-    }
+    });
   </script>
 @endsection

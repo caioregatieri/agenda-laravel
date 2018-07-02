@@ -25,7 +25,7 @@ Médico
 
     {!! Form::model($doctor, ['route'=>['doctors.update', $doctor->id], 'method'=>'post']) !!}
 
-      @include('doctors._formEdit')
+      @include('doctors._form')
 
       <a href="{{ route('doctors.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
       <button type="submit" class="btn btn-success btn-save"><i class="fa fa-check"></i> Salvar</button>

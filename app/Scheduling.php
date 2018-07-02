@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Scheduling extends Model
 {
     //
+    protected $fillable = ['user_id','doctor_id','patient_id','date','status'];
 
     public function user()
     {

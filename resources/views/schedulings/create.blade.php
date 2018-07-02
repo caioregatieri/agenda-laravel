@@ -25,7 +25,7 @@ Agendamento
 
     {!! Form::open(['route'=>'schedulings.store', 'method'=>'post', 'id'=>'form']) !!}
 
-      @include('schedulings/_formCreate')
+      @include('schedulings/_form')
 
       <a href="{{ route('schedulings.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
       <button type="submit" class="btn btn-success btn-save"><i class="fa fa-check"></i> Salvar</button>
@@ -42,6 +42,6 @@ Agendamento
       $('#form').submit(function(){
         $('.btn-save').prop('disabled', true);
       });
-    }
+    });
   </script>
 @endsection

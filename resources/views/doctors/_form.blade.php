@@ -11,5 +11,5 @@
 
 <div class="form-group">
   {!! Form::label('specialty','Especialidade:') !!}
-  {!! Form::text('specialty', null, ['class'=>'form-control input-phone']) !!}
+  {!! Form::text('specialty', null, ['class'=>'form-control']) !!}
 </div>

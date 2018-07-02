@@ -24,7 +24,7 @@ class DoctorController extends Controller
 
     public function edit($id) {
         $doctor = Doctor::find($id);
-        return view('doctors.index', compact('doctor'));
+        return view('doctors.edit', compact('doctor'));
     }
 
     public function update(Request $request, $id) {

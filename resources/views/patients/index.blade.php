@@ -27,11 +27,11 @@ Pacientes
               <td>{{$patient->id}}</td>
               <td>{{$patient->name}}</td>
               <td>{{$patient->phone}}</td>
-              <td style="width: 100px; text-align: right">
+              <td style="width: 160px; text-align: right">
                 <a href="{{ route('patients.edit',['id'=>$patient->id])}}" class="btn btn-primary btn-sm">
                     <i class="fa fa-pencil"></i> Editar
                 </a>
-                <a href="{{ route('patients.delete',['id'=>$patient->id])}}" class="btn btn-danger btn-sm btn-delete">
+                <a href="{{ route('patients.destroy',['id'=>$patient->id])}}" class="btn btn-danger btn-sm btn-delete">
                     <i class="fa fa-trash"></i> Excluir
                 </a>
               </td>
