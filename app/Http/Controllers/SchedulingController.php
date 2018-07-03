@@ -60,6 +60,9 @@ class SchedulingController extends Controller
         ->editColumn('date', function(Scheduling $scheduling) {
             return date("d/m/Y", strtotime($scheduling->date));
         })
+        ->editColumn('time', function(Scheduling $scheduling) {
+            return substr($scheduling->time, 0, 5);
+        })
         ->editColumn('status', function(Scheduling $scheduling) {
             return $scheduling->status == '1' ? 'Pendente' : ($scheduling->status == '2' ? 'Atendido' : 'Cancelado');
         })

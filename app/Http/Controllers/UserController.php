@@ -19,7 +19,10 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
-        User::create($request->all());
+        $this->valida($request);
+        $dados = $request->all();
+        $dados['password'] = bcrypt($dados['password']);
+        User::create($dados);
         return redirect()->route('users.index');
     }
 
@@ -29,13 +32,14 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id) {
-        $values = $request->all();
-        if (trim($values['password']) == "") {
-            $values = $request->only('name','email');
+        $this->valida($request);
+        $dados = $request->all();
+        if (trim($dados['password']) == "") {
+            $dados = $request->only('name','email');
         }else{
-            $values['email'] = bcrypt($values['email']);
+            $dados['password'] = bcrypt($dados['password']);
         }
-        User::find($id)->update($values);
+        User::find($id)->update($dados);
         return redirect()->route('users.index');
     }
 
@@ -72,7 +76,7 @@ class UserController extends Controller
             'email.email' => 'O campo e-mail está invalido',
             'password.required' => 'Informe a senha',
             'password.max' => 'O campo senha deve ter no máximo 15 caracteres',
-            'password.confirmed' => 'O campo senha e confirme não estão iguail'
+            'password.confirmed' => 'O campo senha e confirme não estão iguais'
         ]);
     }
 }

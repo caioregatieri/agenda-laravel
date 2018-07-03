@@ -14,7 +14,8 @@ class PatientController extends Controller
     }
 
     public function create() {
-        return view('patients.create');
+        $states = $this->estados();
+        return view('patients.create', compact('states'));
     }
 
     public function store(Request $request) {
@@ -24,8 +25,9 @@ class PatientController extends Controller
     }
 
     public function edit($id) {
+        $states = $this->estados();
         $patient = Patient::find($id);
-        return view('patients.edit', compact('patient'));
+        return view('patients.edit', compact('patient','states'));
     }
 
     public function update(Request $request, $id) {
@@ -80,5 +82,39 @@ class PatientController extends Controller
             'neighborhood.required' => 'Informe o bairro',
             'neighborhood.max' => 'O campo bairro deve ter no máximo 50 caracteres',
         ]);
+    }
+
+    public function estados(){
+        return $status = collect(
+            [
+                'AC'=>'Acre',
+                'AL'=>'Alagoas',
+                'AP'=>'Amapá',
+                'AM'=>'Amazonas',
+                'BA'=>'Bahia',
+                'CE'=>'Ceará',
+                'DF'=>'Distrito Federal',
+                'ES'=>'Espírito Santo',
+                'GO'=>'Goiás',
+                'MA'=>'Maranhão',
+                'MT'=>'Mato Grosso',
+                'MS'=>'Mato Grosso do Sul',
+                'MG'=>'Minas Gerais',
+                'PA'=>'Pará',
+                'PB'=>'Paraíba',
+                'PR'=>'Paraná',
+                'PE'=>'Pernambuco',
+                'PI'=>'Piauí',
+                'RJ'=>'Rio de Janeiro',
+                'RN'=>'Rio Grande do Norte',
+                'RS'=>'Rio Grande do Sul',
+                'RO'=>'Rondônia',
+                'RR'=>'Roraima',
+                'SC'=>'Santa Catarina',
+                'SP'=>'São Paulo',
+                'SE'=>'Sergipe',
+                'TO'=>'Tocantins'
+            ]
+        );
     }
 }
