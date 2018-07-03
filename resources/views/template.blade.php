@@ -47,10 +47,18 @@
                         <i class="fa fa-user fa-fw"></i> {{Auth::user()->name}} <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{{ route('users.edit',['id'=>Auth::user()->id]) }}"><i class="fa fa-user fa-fw"></i> Perfil</a>
                         </li>
-                        <li class="divider"></li>
-                        <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out fa-fw"></i>
+                                Sair
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

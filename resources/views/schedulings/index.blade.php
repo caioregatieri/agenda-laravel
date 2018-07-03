@@ -19,7 +19,7 @@ Agendamentos
           <tr>
             <th>Id</th>
             <th>Paciente</th>
-            <th>Medico</th>
+            <th>Médico</th>
             <th>Data</th>
             <th>Hora</th>
             <th>Situação</th>

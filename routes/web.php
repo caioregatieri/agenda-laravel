@@ -12,16 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
+
+Route::get('home', ['as'=>'home','uses'=>'HomeController@index']);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function(){
-
-    Route::get('home', ['as'=>'home','uses'=>'HomeController@index']);
   
     Route::group(['prefix'=>'users'], function(){
       Route::get('',             ['as'=>'users.index','uses'=>'UserController@index']);

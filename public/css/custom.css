@@ -26,3 +26,9 @@ nav{
 	position: fixed !important;
 	width: 100%;
 }
+
+@media(max-width: 767px){
+	#page-wrapper > div {
+		margin-top: 50px;
+	}
+}
