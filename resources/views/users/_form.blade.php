@@ -15,6 +15,6 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('password_confirm','Confirme a senha:') !!}
-  {!! Form::password('password_confirm', ['class'=>'form-control']) !!}
+  {!! Form::label('password_confirmation','Confirme a senha:') !!}
+  {!! Form::password('password_confirmation', ['class'=>'form-control']) !!}
 </div>

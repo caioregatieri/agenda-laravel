@@ -8,11 +8,12 @@ Use App\Scheduling;
 Use App\Doctor;
 Use App\Patient;
 
+use Yajra\Datatables\Datatables;
+
 class SchedulingController extends Controller
 {
     public function index() {
-        $schedulings = Scheduling::paginate(15);
-        return view('schedulings.index', compact('schedulings'));
+        return view('schedulings.index');
     }
 
     public function create() {
@@ -46,6 +47,35 @@ class SchedulingController extends Controller
         Scheduling::destroy($id);
         return redirect()->route('schedulings.index');
     }
+    
+    public function datatables() {
+        $model = Scheduling::with(['doctor', 'patient']);
+        return Datatables::of($model)
+        ->editColumn('doctor', function(Scheduling $scheduling) {
+            return $scheduling->doctor->name;
+        })
+        ->editColumn('patient', function(Scheduling $scheduling) {
+            return $scheduling->patient->name;
+        })
+        ->editColumn('date', function(Scheduling $scheduling) {
+            return date("d/m/Y", strtotime($scheduling->date));
+        })
+        ->editColumn('status', function(Scheduling $scheduling) {
+            return $scheduling->status == '1' ? 'Pendente' : ($scheduling->status == '2' ? 'Atendido' : 'Cancelado');
+        })
+        ->addColumn('action', function ($cheduling) {
+            $routeEdit = route('schedulings.edit', ['id'=> $cheduling->id]);
+            $routeDelete = route('schedulings.destroy', ['id'=> $cheduling->id]);
+            return "<a href='" .$routeEdit. "' class='btn btn-primary btn-sm'>" . 
+                        "<i class='fa fa-pencil'></i> Editar" . 
+                    "</a>" . 
+                    "&nbsp;" .
+                    "<a href='" .$routeDelete. "' class='btn btn-danger btn-sm btn-delete'>" . 
+                        "<i class='fa fa-trash'></i> Excluir" . 
+                    "</a>";
+        })
+        ->make(true);
+    }
 
     public function valida($request){
         $request->validate([
@@ -53,7 +83,7 @@ class SchedulingController extends Controller
             'doctor_id' => 'required|integer',
             'patient_id' => 'required|integer',
             'date' => 'required',
-            'time' => 'required|',
+            'time' => 'required',
             'status' => 'required|integer',
         ],[
             'user_id.required' => 'Informe o id do usuário',

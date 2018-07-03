@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function(){
       Route::get('edit/{id}',    ['as'=>'users.edit', 'uses'=>'UserController@edit']);
       Route::post('update/{id}', ['as'=>'users.update', 'uses'=>'UserController@update']);
       Route::get('destroy/{id}', ['as'=>'users.destroy', 'uses'=>'UserController@destroy']);
+
+      Route::get('datatables',   ['as'=>'users.datatables', 'uses'=>'UserController@datatables']);
     });
 
     Route::group(['prefix'=>'doctors'], function(){
@@ -37,6 +39,8 @@ Route::group(['middleware' => 'auth'], function(){
       Route::get('edit/{id}',    ['as'=>'doctors.edit', 'uses'=>'DoctorController@edit']);
       Route::post('update/{id}', ['as'=>'doctors.update', 'uses'=>'DoctorController@update']);
       Route::get('destroy/{id}', ['as'=>'doctors.destroy', 'uses'=>'DoctorController@destroy']);
+
+      Route::get('datatables',   ['as'=>'doctors.datatables', 'uses'=>'DoctorController@datatables']);
     });
 
     Route::group(['prefix'=>'patients'], function(){
@@ -46,6 +50,8 @@ Route::group(['middleware' => 'auth'], function(){
       Route::get('edit/{id}',    ['as'=>'patients.edit', 'uses'=>'PatientController@edit']);
       Route::post('update/{id}', ['as'=>'patients.update', 'uses'=>'PatientController@update']);
       Route::get('destroy/{id}', ['as'=>'patients.destroy', 'uses'=>'PatientController@destroy']);
+
+      Route::get('datatables',   ['as'=>'patients.datatables', 'uses'=>'PatientController@datatables']);
     });
 
     Route::group(['prefix'=>'schedulings'], function(){
@@ -55,6 +61,8 @@ Route::group(['middleware' => 'auth'], function(){
       Route::get('edit/{id}',    ['as'=>'schedulings.edit', 'uses'=>'SchedulingController@edit']);
       Route::post('update/{id}', ['as'=>'schedulings.update', 'uses'=>'SchedulingController@update']);
       Route::get('destroy/{id}', ['as'=>'schedulings.destroy', 'uses'=>'SchedulingController@destroy']);
+
+      Route::get('datatables',   ['as'=>'schedulings.datatables', 'uses'=>'SchedulingController@datatables']);
     });
 
 });

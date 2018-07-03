@@ -12,35 +12,60 @@ Pacientes
         <div class="btn-group pull-left">
           <a href="{{ route('patients.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
         </div>
-        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $patients->total() }}</h4>
+        <h4 class="panel-title pull-right" style="padding-top: 7.5px;"></h4>
       </div>
       <!-- Table -->
-      <table class="table table-striped table-responsible table-sm">
+      <table class="table table-striped table-responsible table-sm" id="table-patients" style="padding: 10px;">
+        <thead>
           <tr>
             <th>Id</th>
             <th>Nome</th>
             <th>Telefone</th>
             <th></th>
           </tr>
-          @foreach($patients as $patient)
-            <tr>
-              <td>{{$patient->id}}</td>
-              <td>{{$patient->name}}</td>
-              <td>{{$patient->phone}}</td>
-              <td style="width: 160px; text-align: right">
-                <a href="{{ route('patients.edit',['id'=>$patient->id])}}" class="btn btn-primary btn-sm">
-                    <i class="fa fa-pencil"></i> Editar
-                </a>
-                <a href="{{ route('patients.destroy',['id'=>$patient->id])}}" class="btn btn-danger btn-sm btn-delete">
-                    <i class="fa fa-trash"></i> Excluir
-                </a>
-              </td>
-            </tr>
-          @endforeach
+        </thead>
       </table>
-
     </div>
 
-    {!! $patients->render() !!}
+@endsection
 
+@section('scripts')
+<script>
+    $(function() {
+        $('#table-patients').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('patients.datatables') !!}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'name', name: 'name' },
+                { data: 'phone', name: 'phone' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ],
+            language: {
+                sEmptyTable: "Nenhum registro encontrado",
+                sInfo: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                sInfoEmpty: "Mostrando 0 até 0 de 0 registros",
+                sInfoFiltered: "(Filtrados de _MAX_ registros)",
+                sInfoPostFix: "",
+                sInfoThousands: ".",
+                sLengthMenu: "_MENU_ resultados por página",
+                sLoadingRecords: "Carregando...",
+                sProcessing: "Processando...",
+                sZeroRecords: "Nenhum registro encontrado",
+                sSearch: "Pesquisar",
+                oPaginate: {
+                    sNext: "Próximo",
+                    sPrevious: "Anterior",
+                    sFirst: "Primeiro",
+                    sLast: "Último"
+                },
+                oAria: {
+                    sSortAscending: ": Ordenar colunas de forma ascendente",
+                    sSortDescending: ": Ordenar colunas de forma descendente"
+                }
+            }
+        });
+    });
+</script>
 @endsection

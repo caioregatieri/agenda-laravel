@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 Use App\Patient;
+use Yajra\Datatables\Datatables;
 
 class PatientController extends Controller
 {
     public function index() {
-        $patients = Patient::paginate(15);
-        return view('patients.index', compact('patients'));
+        return view('patients.index');
     }
 
     public function create() {
@@ -37,6 +37,22 @@ class PatientController extends Controller
     public function destroy($id) {
         Patient::destroy($id);
         return redirect()->route('patients.index');
+    }
+
+    public function datatables() {
+        return Datatables::of(Patient::query())
+        ->addColumn('action', function ($patient) {
+            $routeEdit = route('patients.edit', ['id'=> $patient->id]);
+            $routeDelete = route('patients.destroy', ['id'=> $patient->id]);
+            return "<a href='" .$routeEdit. "' class='btn btn-primary btn-sm'>" . 
+                        "<i class='fa fa-pencil'></i> Editar" . 
+                    "</a>" . 
+                    "&nbsp;" .
+                    "<a href='" .$routeDelete. "' class='btn btn-danger btn-sm btn-delete'>" . 
+                        "<i class='fa fa-trash'></i> Excluir" . 
+                    "</a>";
+        })
+        ->make(true);
     }
 
     public function valida($request){

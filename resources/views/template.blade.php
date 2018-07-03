@@ -11,8 +11,10 @@
         <link name="metismenu" rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
         <!-- SB Admin 2 -->
         <link name="sbadmin" rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}">
-        <!-- font-awesome -->
+        <!-- Font-awesome -->
         <link name="fontawesome" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <!-- DataTables-->
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <!-- Custom -->
         <link name="custom" rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <style>
@@ -89,6 +91,8 @@
     <script src="{{ asset('js/sb-admin-2.js') }}"></script>
     <!--Jquery Mask -->
     <script src="{{ asset('js/jquery.maskedinput.min.js') }}"></script>
+    <!--DataTables -->
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <!-- Mascaras -->
     <script>
         $(".input-phone")
