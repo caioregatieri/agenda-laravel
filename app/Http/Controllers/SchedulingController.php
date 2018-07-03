@@ -10,8 +10,6 @@ Use App\Patient;
 
 class SchedulingController extends Controller
 {
-    
-
     public function index() {
         $schedulings = Scheduling::paginate(15);
         return view('schedulings.index', compact('schedulings'));

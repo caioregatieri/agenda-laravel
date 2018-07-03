@@ -24,12 +24,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('home', ['as'=>'home','uses'=>'HomeController@index']);
   
     Route::group(['prefix'=>'users'], function(){
-      Route::get('',             ['as'=>'users.index','uses'=>'DoctorController@index']);
-      Route::get('create',       ['as'=>'users.create', 'uses'=>'DoctorController@create']);
-      Route::post('store',       ['as'=>'users.store', 'uses'=>'DoctorController@store']);
-      Route::get('edit/{id}',    ['as'=>'users.edit', 'uses'=>'DoctorController@edit']);
-      Route::post('update/{id}', ['as'=>'users.update', 'uses'=>'DoctorController@update']);
-      Route::get('destroy/{id}', ['as'=>'users.destroy', 'uses'=>'DoctorController@destroy']);
+      Route::get('',             ['as'=>'users.index','uses'=>'UserController@index']);
+      Route::get('create',       ['as'=>'users.create', 'uses'=>'UserController@create']);
+      Route::post('store',       ['as'=>'users.store', 'uses'=>'UserController@store']);
+      Route::get('edit/{id}',    ['as'=>'users.edit', 'uses'=>'UserController@edit']);
+      Route::post('update/{id}', ['as'=>'users.update', 'uses'=>'UserController@update']);
+      Route::get('destroy/{id}', ['as'=>'users.destroy', 'uses'=>'UserController@destroy']);
     });
 
     Route::group(['prefix'=>'doctors'], function(){

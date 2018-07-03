@@ -22,6 +22,7 @@ Agendamentos
             <th>Medico</th>
             <th>Data</th>
             <th>Hora</th>
+            <th>Situação</th>
             <th></th>
           </tr>
           @foreach($schedulings as $scheduling)
@@ -30,7 +31,8 @@ Agendamentos
               <td>{{$scheduling->patient->name}}</td>
               <td>{{$scheduling->doctor->name}}</td>
               <td>{{$scheduling->date}}</td>
-              <td>{{ substr($scheduling->time, 0, 5)}}</td>
+              <td>{{substr($scheduling->time, 0, 5)}}</td>
+              <td>{{$scheduling->status === '1' ? "Pendente" : ($scheduling->status === '2' ? "Atendido" : "Cancelado")}}</td>
               <td style="width: 160px; text-align: right">
                 <a href="{{ route('schedulings.edit',['id'=>$scheduling->id])}}" class="btn btn-primary btn-sm">
                     <i class="fa fa-pencil"></i> Editar

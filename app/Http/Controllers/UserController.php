@@ -24,11 +24,17 @@ class UserController extends Controller
 
     public function edit($id) {
         $user = User::find($id);
-        return view('users.index', compact('user'));
+        return view('users.edit', compact('user'));
     }
 
     public function update(Request $request, $id) {
-        User::find($id)->update($request->all());
+        $values = $request->all();
+        if (trim($values['password']) == "") {
+            $values = $request->only('name','email');
+        }else{
+            $values['email'] = bcrypt($values['email']);
+        }
+        User::find($id)->update($values);
         return redirect()->route('users.index');
     }
 

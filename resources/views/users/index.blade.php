@@ -12,7 +12,7 @@ Usuários
         <div class="btn-group pull-left">
           <a href="{{ route('users.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
         </div>
-        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $doctors->total() }}</h4>
+        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $users->total() }}</h4>
       </div>
       <!-- Table -->
       <table class="table table-striped table-responsible table-sm">
@@ -26,7 +26,7 @@ Usuários
             <tr>
               <td>{{$user->id}}</td>
               <td>{{$user->name}}</td>
-              <td>{{$user->phone}}</td>
+              <td>{{$user->email}}</td>
               <td style="width: 160px; text-align: right">
                 <a href="{{ route('users.edit',['id'=>$user->id])}}" class="btn btn-primary btn-sm">
                     <i class="fa fa-pencil"></i> Editar

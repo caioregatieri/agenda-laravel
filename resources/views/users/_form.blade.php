@@ -5,11 +5,16 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('phone','Telefone:') !!}
-  {!! Form::text('phone', null, ['class'=>'form-control input-phone']) !!}
+  {!! Form::label('email','E-mail:') !!}
+  {!! Form::text('email', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('specialty','Especialidade:') !!}
-  {!! Form::text('specialty', null, ['class'=>'form-control']) !!}
+  {!! Form::label('password','Senha:') !!}
+  {!! Form::password('password', ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+  {!! Form::label('password_confirm','Confirme a senha:') !!}
+  {!! Form::password('password_confirm', ['class'=>'form-control']) !!}
 </div>
