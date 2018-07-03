@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         'Collective\Html\HtmlServiceProvider',
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,7 +229,7 @@ return [
 
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];
