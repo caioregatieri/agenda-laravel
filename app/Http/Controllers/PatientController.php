@@ -33,7 +33,7 @@ class PatientController extends Controller
     }
 
     public function destroy($id) {
-        Patient::find($id)->destroy();
+        Patient::destroy($id);
         return redirect()->route('patients.index');
     }
 }

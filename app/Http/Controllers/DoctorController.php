@@ -33,7 +33,7 @@ class DoctorController extends Controller
     }
 
     public function destroy($id) {
-        Doctor::find($id)->destroy();
+        Doctor::destroy($id);
         return redirect()->route('doctors.index');
     }
 }

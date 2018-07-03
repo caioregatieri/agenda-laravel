@@ -41,7 +41,7 @@ class SchedulingController extends Controller
     }
 
     public function destroy($id) {
-        Scheduling::find($id)->destroy();
+        Scheduling::destroy($id);
         return redirect()->route('schedulings.index');
     }
 }
