@@ -16,11 +16,11 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('hour','Hora:') !!}
-  {!! Form::text('hour', null, ['class'=>'form-control input-hour']) !!}
+  {!! Form::label('time','Hora:') !!}
+  {!! Form::text('time', null, ['class'=>'form-control input-hour']) !!}
 </div>
 
 <div class="form-group">
   {!! Form::label('status','Situação:') !!}
-  {!! Form::text('status', null, ['class'=>'form-control']) !!}
+  {!! Form::select('status', $status, null, ['class'=>'form-control']) !!}
 </div>

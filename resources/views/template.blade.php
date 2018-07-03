@@ -114,6 +114,13 @@
             }
         });
     </script>
+    <!-- delete -->
+    <script>
+        $(".btn-delete").on("click", function(e){
+            e.preventDefault();
+            return confirm("Deseja realmente excluir?");
+        })
+    </script>
     @yield('scripts')
 </body>
 

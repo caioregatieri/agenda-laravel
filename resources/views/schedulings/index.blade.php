@@ -21,13 +21,16 @@ Agendamentos
             <th>Paciente</th>
             <th>Medico</th>
             <th>Data</th>
+            <th>Hora</th>
             <th></th>
           </tr>
           @foreach($schedulings as $scheduling)
             <tr>
+              <td>{{$scheduling->id}}</td>
               <td>{{$scheduling->patient->name}}</td>
               <td>{{$scheduling->doctor->name}}</td>
               <td>{{$scheduling->date}}</td>
+              <td>{{ substr($scheduling->time, 0, 5)}}</td>
               <td style="width: 160px; text-align: right">
                 <a href="{{ route('schedulings.edit',['id'=>$scheduling->id])}}" class="btn btn-primary btn-sm">
                     <i class="fa fa-pencil"></i> Editar
