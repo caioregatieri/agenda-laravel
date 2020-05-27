@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
+
 Use App\Scheduling;
 
-class SchedulingApiController extends Controller
+class SchedulingController extends Controller
 {
     public function index(Request $request) {
         if($request->id){
